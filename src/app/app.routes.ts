@@ -7,10 +7,10 @@ import { Products } from './pages/products/products';
 import { Register } from './pages/register/register';
 
 export const routes: Routes = [
-    { path: 'home', component: Home, title:'Welcome' },
+    { path: '', component: Home, title:'Welcome' },
     { path: 'admin', component: Admin, title:'Admin Dashboard' },
     { path: 'login', component: Login, title:'Login' },
-    { path: 'not_found', component: NotFound, title:'404 - Page not found' },
     { path: 'products', component: Products, title:'Products' },
     { path: 'register', component: Register, title:'Register user' },
+    { path: '**', component: NotFound, title:'404 - Page not found' },
 ];

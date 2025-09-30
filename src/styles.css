@@ -1,1 +1,18 @@
 /* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.cdnfonts.com/css/rosa');
+@import url('https://fonts.cdnfonts.com/css/pwschoolscript');
+@import url('https://fonts.cdnfonts.com/css/phitradesign-ink');
+
+:root{
+    --Dark_Back_Ground: #121212;
+    --Dark_Primary_Text: #E0E0E0;
+    --Dark_Secondary_Text: #B0B0B0;
+    --Dark_Accent_Borders: #444444;
+    --Dark_Accent_2: #888888;
+
+    --Light_Back_Ground: #FAFAFA;
+    --Light_Primary_Text: #242424;
+    --Light_Secondary_Text: #484B6A;
+    --Light_Accent_Borders: #D2D3DB;
+    --Light_Accent_2: #E4E5F1;
+}
