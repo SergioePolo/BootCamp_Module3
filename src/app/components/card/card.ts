@@ -2,6 +2,7 @@ import { Component, inject, OnInit } from '@angular/core';
 //IMPORTA LAS LLAMADAS A LA BASE DE DATOS PARA QUE LA INFORMACIÓN PUEDA SER VISIBLE EN EL COMPONENTE
 import { ServiceProducts } from '../../services/products';
 import { Products } from '../../interfaces/products';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-card',
@@ -18,7 +19,8 @@ export class Card implements OnInit{
   //La estructura e TypeScript nos exige que al momento de inicializar una variable se debe manejar la siguiente estructura variable : tipo(String, Number, Boolean,...) = valor;
   
   allProducts: Products[] = [];//Adigna un arreglo de productos a la variable allProducts que pretende alrmacenar todos los productos de la base de datos
-
+  //Su objetivo es almacenar el elemento base para poder conectarlo con la información de la imagen de la tarjeta y poder visualizar correctamente las imagenes desde la vista de la aplicación
+  baseURL : string = environment.appUrl;
 
   ShowProducts(){
     //Este método está encargado de realizar 
@@ -31,7 +33,7 @@ export class Card implements OnInit{
 
       //Se gestionan las respuestas exitosas de la consulta
       next : (res: any) => {
-        this.allProducts = res;
+        this.allProducts = res.data;
         console.log(this.allProducts);
       },
       //Se gestionan las respuestas de error de la consulta

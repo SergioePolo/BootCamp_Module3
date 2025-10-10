@@ -1,1 +1,13 @@
-<p>card works!</p>
+<section class="row">
+    @for (item of allProducts; track $index) {
+        <div class="card" style="width: 18rem;">
+            //Los corchetes preparan la etiqueta img para poder recibir elementos de typescript
+            <img [src]="baseURL" + item.image class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">{{item.title}}</h5>
+                <p class="card-text">{{item.description}}</p>
+                    <a href="#" class="btn btn-primary">{{item.price}}</a>
+                </div>
+            </div>
+        }
+</section>

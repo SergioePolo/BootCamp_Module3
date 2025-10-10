@@ -1,0 +1,21 @@
+.headerStyle{
+        background-color: var(--Dark_Accent_2);
+        font-family: var(--Primary_Text);
+}
+.logo{
+    color: var(--Dark_Primary_Text);
+    font-weight: bold;
+}
+
+.btn-Login {
+    background-color: var(--Dark_Accent_Borders);
+    color: var(--Dark_Primary_Text);
+    font-size: medium;
+    border: none; 
+}
+
+.btn-Register{
+    border: 1px solid; 
+    border-color: var(--Dark_Secondary_Text);
+    color: var(--Dark_Primary_Text);
+}

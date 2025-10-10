@@ -1,0 +1,17 @@
+.footerStyle{
+    position: fixed;
+    bottom: 0;
+    width: 100vw;
+    height: 150px;
+    background-color: var(--Dark_Accent_Borders);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.socialMedia i {
+    color: var(--Dark_Primary_Text);
+    font-size: x-large;
+}

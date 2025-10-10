@@ -17,7 +17,23 @@
     --Light_Accent_2: #E4E5F1;
 
 
-    --Primary_Text: font-family: 'Rosa', sans-serif;
-    --Secondary_Text: font-family: 'PWSchoolScript', sans-serif;
-    --Third_Text:font-family: 'phitradesign INK', sans-serif;
+    --Primary_Text: 'Rosa', sans-serif;
+    --Secondary_Text: 'PWSchoolScript', sans-serif;
+    --Third_Text: 'phitradesign INK', sans-serif;
+
+
+}
+
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: var(--Dark_Back_Ground);
+    font-family: var(--Third_Text);
+    color: var(--Dark_Primary_Text);
+    overflow-x: hidden;
 }
