@@ -1,0 +1,21 @@
+main{
+    border-style: solid red;
+    width: 100vw;
+    height: 100vw;
+}
+
+.formulario{
+    border: 1px solid rgb(179, 176, 176);
+    border-radius: 5px;
+    width: 50%;
+    margin: 200px auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap:20px
+}
+
+.btn{
+    background-color: var(--Dark_Accent_Borders);
+    color: var(--Dark_Primary_Text);
+}

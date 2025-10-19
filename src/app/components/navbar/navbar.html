@@ -11,7 +11,9 @@
         <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
             <ul class="navbar-nav d-flex gap-2 align-items-center">
                 <li><a class="nav-link" routerLink="/products">Products</a></li>
-                <li><a class="nav-link" routerLink="/admin">Dashboard</a></li>
+                @if (isroleValidation) {
+                    <li><a class="nav-link" routerLink="/dashboard">Dashboard</a></li>
+                }
                 <li><a class="btn btn-Login" routerLink="/login">Login</a></li>
                 <li><a class="btn btn-Register" routerLink="/register">Register</a></li>
             </ul>

@@ -57,5 +57,10 @@ export class ServiceLogin {
     alert("Tu sesión se ha cerrado con éxito, esperamos verte pronto");
     this._router.navigate(['/login']);
   }
+
+  //Método para validar si se tiene iniciada la sesión o no
+  isLoggedIn(){
+    return this.getToken() ? true : false;
+  }
 }
 
