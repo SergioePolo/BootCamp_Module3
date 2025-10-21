@@ -23,7 +23,7 @@ export class ServiceLogin {
 
   //Buscar el token que se almacena en el localStorage
   getToken() {
-    return localStorage.getItem('sessionToken');//Obtenemos el token del navegador
+    return localStorage.getItem('token');//Obtenemos el token del navegador
   }
 
   //Validación del rol del token recibido desde el Backend

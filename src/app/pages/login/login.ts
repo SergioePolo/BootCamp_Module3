@@ -1,7 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 //Para poder trabajar con formularios y poder recibir la información de los formularios se debe importar la directiva de Andular para trabajar con formularios
 import { ReactiveFormsModule, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Credentials } from '../../interfaces/credentials';
+import { ServiceLogin } from '../../services/login';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-login',
@@ -11,24 +13,45 @@ import { Credentials } from '../../interfaces/credentials';
 })
 export class Login {
   //Angular agrupa todos formularios en un grupo con la función FormGroup que permite almancenar la información de un formulario sin importar la cantidad de elementos
-  loginForm = new FormGroup ({
+  loginForm = new FormGroup({
     //La función FormControl esta encargada de almacenar la información en la variable definida
     email: new FormControl(''),
     password: new FormControl('')
   })
 
+  private _serviceLogin = inject(ServiceLogin);
+
   //Con esta función manejamos los eventos del sistema
-  handleSubmit(){
-    const email = this.loginForm.value.email;
-    const password = this.loginForm.value.password;
-
-    console.log(email, password);
-    /* const loginCredentials: Credentials = {
-      email: this.loginForm.value.email,
-      password: this.loginForm.value.password
+  handleSubmit() {
+    const loginCredentials: Credentials = {
+      email: this.loginForm.value.email || '',
+      password: this.loginForm.value.password || ''
     }
-    console.log('Credenciales del Login', loginCredentials); */
+    console.log('Credenciales del Login', loginCredentials);
 
+    this._serviceLogin.login(loginCredentials).subscribe({
+      //Aqui se recive la respuesta y se procesa con base a si es exitosa o fallida
+      next: (res: any) =>{
+        //Aqui se procesa si la respuesta no presenta un error
+        localStorage.setItem('token', res.token);
+        Swal.fire({
+          title: 'Welcome',
+          text: res.msg,
+          icon: 'success',
+          confirmButtonText:"Let's dive in"
+        })
+        this._serviceLogin.loginNavigation();
+      },
+      error: (err: any)=>{
+        //Aqui se procesa si la respuesta retorna un error
+        Swal.fire({
+          title: 'Error',
+          text: err.error.msg,
+          icon: 'error',
+          confirmButtonText: 'Check your information'
+          
+        })
+      }
+    });
   }
-
 }

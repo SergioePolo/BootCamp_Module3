@@ -1,6 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { ReactiveFormsModule, FormGroup, FormControl, Validators } from '@angular/forms';
-
+import { Users } from '../../interfaces/users';
+import { ServiceUsers } from '../../services/users';
+import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-register',
   imports: [ReactiveFormsModule],
@@ -8,6 +11,10 @@ import { ReactiveFormsModule, FormGroup, FormControl, Validators } from '@angula
   styleUrl: './register.css'
 })
 export class Register {
+
+  private _userService = inject(ServiceUsers);
+  private _router = inject(Router);
+
   registerForm = new FormGroup({
     fullName: new FormControl(''),
     userName: new FormControl(''),
@@ -17,11 +24,35 @@ export class Register {
   })
 
   handleSubmit(){
-    const FullName = this.registerForm.value.fullName;
-    const userName = this.registerForm.value.userName;
-    const email = this.registerForm.value.email;
-    const age = this.registerForm.value.age;
-    const password = this.registerForm.value.password;
-    console.log(FullName, userName, email, age, password)
+    const userForm : Users = {
+      _id: '',
+      fullName: this.registerForm.value.fullName || '',
+      userName: this.registerForm.value.userName || '',
+      email: this.registerForm.value.email || '',
+      age: this.registerForm.value.age || 0, 
+      password: this.registerForm.value.password || '',
+      role: 'user'
+    }
+    this._userService.createUser(userForm).subscribe({
+      next: (res: any)=>{
+        Swal.fire({
+          title: 'Bienvenido',
+          icon: 'success',
+          text: res.msg,
+        }).then(
+          ()=>{
+            this._router.navigate(['/login']);
+          }
+        )
+      },
+      error: (res:any)=>{
+        Swal.fire({
+          title: 'Error',
+          icon: 'error',
+          text: res.error.msg,
+          confirmButtonText: 'Check again'
+        })
+      }
+    })
   }
 }
