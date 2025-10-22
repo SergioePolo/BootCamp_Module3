@@ -9,6 +9,7 @@
                 formControlName="fullName"
                 placeholder="Full Name"
                 autocomplete="name"
+                [class.is-invalid]="registerForm.get('fullName')?.invalid"
             >
         </div>
         <div class="mb-3">
@@ -19,6 +20,7 @@
                 formControlName="userName"
                 placeholder="userName"
                 autocomplete="username"
+                [class.is-invalid]="registerForm.get('userName')?.invalid"
             >
         </div>
         <div class="mb-3">
@@ -29,6 +31,7 @@
                 formControlName="email"
                 placeholder="Email"
                 autocomplete="email"
+                [class.is-invalid]="registerForm.get('email')?.invalid"
                 >
         </div>
         <div class="mb-3">
@@ -39,6 +42,7 @@
                 formControlName="age"
                 placeholder="age"
                 autocomplete="age"
+                [class.is-invalid]="registerForm.get('age')?.invalid"
                 >
         </div>
         <div class="mb-3">
@@ -49,6 +53,7 @@
                 formControlName="password"
                 placeholder="password"
                 autocomplete="new-password"
+                [class.is-invalid]="registerForm.get('password')?.invalid"
             >
         </div>
         <button type="submit" class="btn">Crear usuario</button>

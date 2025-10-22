@@ -16,14 +16,20 @@ export class Register {
   private _router = inject(Router);
 
   registerForm = new FormGroup({
-    fullName: new FormControl(''),
-    userName: new FormControl(''),
-    email: new FormControl(''),
-    age: new FormControl<number | null>(null),
-    password: new FormControl(''),
+    fullName: new FormControl('', [Validators.required]),
+    userName: new FormControl('', [Validators.required]),
+    email: new FormControl('', [Validators.required]),
+    age: new FormControl<number | null>(null, [Validators.required, Validators.email]),
+    password: new FormControl('', [Validators.required, Validators.minLength(8)]),
   })
 
   handleSubmit(){
+
+    if(this.registerForm.invalid){
+      this.registerForm.markAllAsTouched();
+      return;
+    }
+
     const userForm : Users = {
       _id: '',
       fullName: this.registerForm.value.fullName || '',
@@ -54,5 +60,8 @@ export class Register {
         })
       }
     })
+  }
+  validaciones(){
+    //Validaciones propias para los formularios
   }
 }

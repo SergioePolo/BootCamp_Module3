@@ -1,9 +1,11 @@
+@if (!isVisible) {
 <header>
     <app-navbar></app-navbar>
 </header>
-
-<router-outlet />
-
+}
+<router-outlet></router-outlet>
+@if (!isVisible) {
 <footer>
     <app-footer></app-footer>
 </footer>
+}

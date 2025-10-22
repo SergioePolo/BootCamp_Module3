@@ -7,10 +7,21 @@ import { Products } from './pages/products/products';
 import { Register } from './pages/register/register';
 //Para poder utilizar el guardian y revisar si el usuario tiene la posiblidad de acceder a la ruta se de be importar la clase guard para poder utilizarla
 import { authGuard } from './guards/auth-guard';
+import { Users } from './pages/admin/users/users';
+import { Inventory } from './pages/admin/inventory/inventory';
 
 export const routes: Routes = [
     { path: '', component: Home, title:'Welcome' },
-    { path: 'dashboard', component: Admin, title:'Admin Dashboard', canActivate: [authGuard] },
+    { path: 'dashboard', 
+        component: Admin, 
+        title:'Admin Dashboard', 
+        canActivate: [authGuard],
+        canActivateChild:[authGuard],
+        children:[
+            {path: 'users', component: Users},
+            {path: 'inventory', component: Inventory},
+        ]
+    },
     { path: 'login', component: Login, title:'Login' },
     { path: 'products', component: Products, title:'Products' },
     { path: 'register', component: Register, title:'Register user' },

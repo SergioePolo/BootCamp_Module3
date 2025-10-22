@@ -15,19 +15,25 @@ export class Login {
   //Angular agrupa todos formularios en un grupo con la función FormGroup que permite almancenar la información de un formulario sin importar la cantidad de elementos
   loginForm = new FormGroup({
     //La función FormControl esta encargada de almacenar la información en la variable definida
-    email: new FormControl(''),
-    password: new FormControl('')
+    email: new FormControl('',[Validators.required, Validators.email]),
+    password: new FormControl('', [Validators.required, Validators.minLength(3)])
   })
 
   private _serviceLogin = inject(ServiceLogin);
 
   //Con esta función manejamos los eventos del sistema
   handleSubmit() {
+  
+    if(this.loginForm.invalid){
+      this.loginForm.markAllAsTouched();
+      return;
+    }
+    
     const loginCredentials: Credentials = {
       email: this.loginForm.value.email || '',
       password: this.loginForm.value.password || ''
     }
-    console.log('Credenciales del Login', loginCredentials);
+    
 
     this._serviceLogin.login(loginCredentials).subscribe({
       //Aqui se recive la respuesta y se procesa con base a si es exitosa o fallida
