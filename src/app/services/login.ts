@@ -55,7 +55,7 @@ export class ServiceLogin {
   logOut(){
     localStorage.removeItem('token');
     alert("Tu sesión se ha cerrado con éxito, esperamos verte pronto");
-    this._router.navigate(['/login']);
+    this._router.navigate(['/']);
   }
 
   //Método para validar si se tiene iniciada la sesión o no

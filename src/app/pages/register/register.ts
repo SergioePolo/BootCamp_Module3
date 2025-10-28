@@ -51,11 +51,11 @@ export class Register {
           }
         )
       },
-      error: (res:any)=>{
+      error: (e:any)=>{
         Swal.fire({
           title: 'Error',
           icon: 'error',
-          text: res.error.msg,
+          text: e.error.msg,
           confirmButtonText: 'Check again'
         })
       }

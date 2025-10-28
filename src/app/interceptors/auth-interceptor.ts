@@ -13,7 +13,7 @@ export const authInterceptor: HttpInterceptorFn = (req, next) => {
   const token = _serviceLogin.getToken();
   //Se almacena el token en el Header para poder enviarlo al Back
   //Se revisa si cuenta con token y en el caso de que no tiene token envia la petición directamente al back y Back revisaría si es necesario contar con token o no
-  const request = token? req.clone({setHeaders:{Authorization: "Bearer" + token}}): req;
+  const request = token? req.clone({setHeaders:{Authorization: "Bearer " + token}}): req;
   //Envia es la petición configurada con el token dependiendo de la necesidad
   return next(request);
 };

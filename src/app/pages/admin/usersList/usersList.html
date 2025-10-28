@@ -1,0 +1,14 @@
+<p>users works!</p>
+
+<div class="container border border-light d-flex flex-wrap gap-5 p-4 border-3 rounded-4">
+    @for (user of usersList; track $index) {
+        <h2 class="fa-bold">{{user.fullName}}</h2>
+        <p>{{user.userName}}</p>
+        <p>{{user.email}}</p>
+
+        <div class="d-flex gap-4">
+            <button class="btn btn-info" (click)="uptadeUser(user._id)">Actualizar</button>
+            <button class="btn btn-danger" (click)="removeUser(user._id)">Eliminar</button>
+        </div>
+    }
+</div>

@@ -1,10 +1,22 @@
-<h1>Dashboard</h1>
-<h1>Dashboard</h1>
-<h1>Dashboard</h1>
-<h1>Dashboard</h1>
-<h1>Dashboard</h1>
+<section class="d-flex vh-100">
+    <div class="nav_Container p-4">
+        <h3 class="text-center">Panel de administración</h3>
+        <nav class="mt-4">
+            <ul class="nav flex-column-2 gap-3" >
+                <li class="nav-item">
+                    <a class="nav-item" routerLink="/dashboard" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Manage Users</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/dashboard/inventory" routerLinkActive="active">Manage Inventory</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link logout" (click)="logout()" >LogOut</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
 
-<router-outlet></router-outlet>
-
-
-<h1>Dashboard2</h1>
+    <div class="flex-grow-1 overflow-y-auto p-4">
+        <router-outlet></router-outlet>
+    </div>
+</section>
